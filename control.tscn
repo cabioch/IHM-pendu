@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdkpq13vjhj7u"]
+
+[ext_resource type="Script" path="res://WrapBoxContainer.gd" id="1_jt3mo"]
+[ext_resource type="Script" path="res://HBoxContainerLetters.gd" id="2_cbdtm"]
+[ext_resource type="Script" path="res://gestionMots.gd" id="2_qa1d4"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_qh5on"]
+
+[sub_resource type="FontVariation" id="FontVariation_mkf6s"]
+spacing_glyph = 20
+
+[node name="MainContainer" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jt3mo")
+
+[node name="TopBoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+vertical = true
+script = ExtResource("2_qa1d4")
+
+[node name="Pendu" type="TextureRect" parent="TopBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("ImageTexture_qh5on")
+stretch_mode = 4
+
+[node name="MotRechercher" type="Label" parent="TopBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = SubResource("FontVariation_mkf6s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LettersHFlowContainer" type="HFlowContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+script = ExtResource("2_cbdtm")
+
+[connection signal="resized" from="." to="." method="_on_resized"]
